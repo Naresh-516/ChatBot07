@@ -10,7 +10,7 @@ function Chat() {
     const { dark, setDark } = useContext(ThemeContext);
     const [loading, setLoading] = useState(false);
     const API_Key=import.meta.env.VITE_GEMINI_API_KEY;
-    // VITE_GEMINI_API_KEY="AIzaSyAJ6wEAmMmTVMnLax5Hl6njhZ28lLNaFQk"
+     
 
     const handleSubmit = async () => {
         if (input.trim()) {
