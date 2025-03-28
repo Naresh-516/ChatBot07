@@ -17,24 +17,24 @@ function Chat() {
             try {
                 const genAI = new GoogleGenerativeAI(API_Key);
                 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-                setLoading(true); // Set loading to true when request starts
+                setLoading(true); 
                 const result = await model.generateContent(input);
                 const res = await result.response.text();
 
                 if (res) {
-                    setLoading(false); // Set loading to false once response is received
+                    setLoading(false); 
                     setChatHistory([...chatHistory, { question: input, answer: res }]);
-                    setInput(""); // Clear input field after sending
+                    setInput(""); 
                 }
             } catch (err) {
                 console.error("Error fetching AI response:", err);
-                setLoading(false); // Ensure loading is stopped on error
+                setLoading(false);
             }
         }
     };
 
     return (
-        <div id="chat" className="flex flex-col flex-grow h-screen p-5 bg-gray-100 w-full overflow-x-hidden">
+        <div id="chat" className="flex flex-col flex-grow h-screen bg-gray-100 w-full overflow-x-hidden">
             <div className={`p-4 flex justify-between items-center ${dark ? "bg-black text-white" : "bg-gray-200 text-black"}`}>
                 <h1 className="text-xl font-semibold text-center flex-1">ChatBot</h1>
                 <button
@@ -65,14 +65,14 @@ function Chat() {
                 )}
             </div>
 
-            {/* Show loader when loading */}
+            
             {loading && (
                 <div className="flex justify-center items-center p-3">
-                    <div className="loader"></div> {/* Customize loader class as per your design */}
+                    <div className="loader"></div>
                 </div>
             )}
 
-            {/* Input and buttons */}
+          
             <div className={`flex justify-center items-center p-3 gap-6 ${dark ? "bg-black text-white" : "bg-gray-200 text-black"}`}>
                 <input
                     className="bg-white text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 w-full sm:w-4/5 md:w-3/5 lg:w-2/5 xl:w-1/3"
